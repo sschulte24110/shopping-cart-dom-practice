@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart</title>
+  <script src="script.js"></script>
+</head>
+<body>
+  <h1>Shopping Cart</h1>
+  <h2>Budget: $$$</h2>
+  <form onsubmit="sumbitForm(event)">
+    <input id="item-name" placeholder="Item Name"/>
+    <input id="item-price" placeholder="Item Price" type="number" value="0"/> 
+    <button>Add To Cart</button>
+  </form>
+  <ul id="shopping-list">
+    <li>You have no items in your cart</li>
+  </ul>
+  <p id="remaining">$$$ Remaining</p>
+</body>
+</html>
