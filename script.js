@@ -27,6 +27,30 @@ function sumbitForm(event) {
 
   // Push our new item to the global array
   cart.push(newItem);
+
+  // Clear the form
+  itemNameElement.value = '';
+  itemPriceElement.value = '0';
+
+  // Update the shopping list on the DOM
+  renderShoppingCart();
+  // Update the remaining budget
+}
+
+function renderShoppingCart() {
+  // Loop over the global cart array
+  // For every item in the array, append a new list item with the name and price
+  const shoppingListElement = document.getElementById('shopping-list');
+  shoppingListElement.innerHTML = ''; // clears out all list items already there
+
+  for (let i = 0; i < cart.length; i++) {
+    shoppingListElement.innerHTML += `
+    <li>
+      <strong>Name:</strong> ${cart[i].name} <strong>Price:</strong> $${cart[i].price}
+    </li>
+    `  
+  }
+
 }
 
 // TODO:
