@@ -35,6 +35,8 @@ function sumbitForm(event) {
   // Update the shopping list on the DOM
   renderShoppingCart();
   // Update the remaining budget
+  renderRemainingBudget();
+
 }
 
 function renderShoppingCart() {
@@ -53,7 +55,21 @@ function renderShoppingCart() {
 
 }
 
-// TODO:
-// function to calculate the remaining budget
-// function to render the shopping list to the DOM
-// function to render the calculated remaining budget to the DOM
+function calculateRemaining() {
+// Sum up total in the cart
+  let total = 0;
+  for (const item of cart) {
+    total += Number(item.price);
+  }
+
+// Calculate the remaining budget
+  const remaining = budget - total;
+  return remaining;
+}
+
+function renderRemainingBudget() {
+  const remaining = calculateRemaining();
+  // update the DOM accordingly
+  const paraElement = document.getElementById('remaining');
+  paraElement.innerText = `$${remaining} Remaining`;
+}
