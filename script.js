@@ -6,6 +6,13 @@ const budget = 100.00;
 
 function onReady() {
   console.log('DOM is Ready');
+
+  // Update the budget h2 with the correct amount
+  const budgetElement = document.getElementById('budget');
+  budgetElement.innerText = `Budget: $${budget}`
+  
+  // Call the renderRemaining function to update the remaining amount
+  renderRemainingBudget();
 }
 
 // form submit function
