@@ -29,7 +29,6 @@ function sumbitForm(event) {
     name: itemNameElement.value,
     price: itemPriceElement.value,
   }
-
   console.log(newItem);
 
   // Push our new item to the global array
@@ -56,10 +55,21 @@ function renderShoppingCart() {
     shoppingListElement.innerHTML += `
     <li>
       <strong>Name:</strong> ${cart[i].name} <strong>Price:</strong> $${cart[i].price}
+      <button onclick="deleteItem(event)">Delete</button>
     </li>
     `  
   }
 
+}
+
+function deleteItem(event) {
+  // Grab the element that was clicked on (delet button)
+  const deleteButton = event.target;
+  console.log(deleteButton);
+
+  // Go find the first 'li' ancestor and remove it
+  //(which will, in turn, remove the <li> that this button is in)
+  deleteButton.closest('li').remove();
 }
 
 function calculateRemaining() {
@@ -75,7 +85,9 @@ function calculateRemaining() {
 }
 
 function renderRemainingBudget() {
+  // Calculate the remaining amount in the budget
   const remaining = calculateRemaining();
+
   // update the DOM accordingly
   const paraElement = document.getElementById('remaining');
   paraElement.innerText = `$${remaining} Remaining`;
